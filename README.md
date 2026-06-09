@@ -66,8 +66,9 @@ magicfest-backend | ... Deployment of web application archive [...] has finished
 | Serviço       | URL                        |
 |---------------|----------------------------|
 | **Frontend**  | http://localhost:3000      |
-| **API**       | http://localhost:8080/api  |
 | **Health**    | http://localhost:8080/api/health → `{"status":"ok"}` |
+
+> `http://localhost:8080/api` sozinho retorna 404 — o backend não tem rota raiz, use `/api/health` para verificar se está no ar.
 
 ---
 
