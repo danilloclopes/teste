@@ -1,0 +1,52 @@
+services:
+
+  db:
+    image: mysql:8.3
+    container_name: magicfest-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpass}
+      MYSQL_DATABASE:      agendamento_db
+      MYSQL_USER:          ${DB_USER:-aux-user}
+      MYSQL_PASSWORD:      ${DB_PASSWORD:-123}
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./docker-init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: magicfest-backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_URL:          jdbc:mysql://db:3306/agendamento_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=America/Sao_Paulo
+      DB_USER:         ${DB_USER:-aux-user}
+      DB_PASSWORD:     ${DB_PASSWORD:-123}
+      FRONTEND_ORIGIN: ${FRONTEND_ORIGIN:-http://localhost:3000}
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: ${VITE_API_URL:-http://localhost:8080/api}
+    container_name: magicfest-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+
+volumes:
+  db_data:

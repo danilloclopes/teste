@@ -1,0 +1,100 @@
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { api } from '../services/api'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+
+const STATUS_LABEL = {
+  PENDENTE:   { label: 'Pendente',   cls: 'badge-pendente'   },
+  CONTRATADO: { label: 'Contratado', cls: 'badge-contratado' },
+  CANCELADO:  { label: 'Cancelado',  cls: 'badge-cancelado'  },
+  CONCLUIDO:  { label: 'Concluído',  cls: 'badge-concluido'  },
+}
+
+function formatDateTime(iso) {
+  if (!iso) return '-'
+  const d = new Date(iso)
+  return d.toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' })
+}
+
+export default function Dashboard() {
+  const [agendamentos, setAgendamentos] = useState([])
+  const [loading, setLoading]           = useState(true)
+  const [erro, setErro]                 = useState('')
+
+  useEffect(() => {
+    api.get('/agendamentos')
+      .then(setAgendamentos)
+      .catch(err => setErro(err.message))
+      .finally(() => setLoading(false))
+  }, [])
+
+  return (
+    <>
+      <Header />
+      <div style={{ paddingTop: 80 }}>
+        <div className="page-header">
+          <div className="container">
+            <h1>📅 Meus Agendamentos</h1>
+            <p>Acompanhe o status das suas reservas de personagens.</p>
+          </div>
+        </div>
+
+        <div className="page-content">
+          <div className="container">
+            <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 20 }}>
+              <Link to="/agendar" className="btn btn-primary">✨ Novo agendamento</Link>
+            </div>
+
+            {loading && <div className="spinner"><span>⏳</span> Carregando…</div>}
+
+            {erro && <div className="alert alert-error">⚠️ {erro}</div>}
+
+            {!loading && !erro && (
+              <div className="card">
+                {agendamentos.length === 0 ? (
+                  <div style={{ textAlign: 'center', padding: '48px 0', color: 'var(--text-medium)' }}>
+                    <div style={{ fontSize: '3rem', marginBottom: 16 }}>🎭</div>
+                    <p>Nenhum agendamento encontrado.</p>
+                    <Link to="/agendar" className="btn btn-primary" style={{ marginTop: 20 }}>
+                      Fazer minha primeira reserva
+                    </Link>
+                  </div>
+                ) : (
+                  <div className="table-wrap">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Personagem</th>
+                          <th>Animador</th>
+                          <th>Data e Hora</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {agendamentos.map(a => {
+                          const st = STATUS_LABEL[a.status] || { label: a.status, cls: '' }
+                          return (
+                            <tr key={a.id}>
+                              <td>#{a.id}</td>
+                              <td>{a.animador?.personagem?.nome ?? '-'}</td>
+                              <td>{a.animador?.usuario?.nome ?? '-'}</td>
+                              <td>{formatDateTime(a.dataHora)}</td>
+                              <td><span className={`badge ${st.cls}`}>{st.label}</span></td>
+                            </tr>
+                          )
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </>
+  )
+}
