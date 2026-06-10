@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { api } from '../services/api'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import { api } from '../../services/api'
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
+import styles from './styles.module.css'
 
 const STATUS_LABEL = {
   PENDENTE:   { label: 'Pendente',   cls: 'badge-pendente'   },
@@ -32,7 +33,7 @@ export default function Dashboard() {
   return (
     <>
       <Header />
-      <div style={{ paddingTop: 80 }}>
+      <div className="pageWrapper">
         <div className="page-header">
           <div className="container">
             <h1>📅 Meus Agendamentos</h1>
@@ -42,7 +43,7 @@ export default function Dashboard() {
 
         <div className="page-content">
           <div className="container">
-            <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 20 }}>
+            <div className={styles.actionsRow}>
               <Link to="/agendar" className="btn btn-primary">✨ Novo agendamento</Link>
             </div>
 
@@ -53,10 +54,10 @@ export default function Dashboard() {
             {!loading && !erro && (
               <div className="card">
                 {agendamentos.length === 0 ? (
-                  <div style={{ textAlign: 'center', padding: '48px 0', color: 'var(--text-medium)' }}>
-                    <div style={{ fontSize: '3rem', marginBottom: 16 }}>🎭</div>
+                  <div className={styles.emptyState}>
+                    <div className={styles.emptyStateIcon}>🎭</div>
                     <p>Nenhum agendamento encontrado.</p>
-                    <Link to="/agendar" className="btn btn-primary" style={{ marginTop: 20 }}>
+                    <Link to="/agendar" className={`btn btn-primary ${styles.emptyStateCta}`}>
                       Fazer minha primeira reserva
                     </Link>
                   </div>

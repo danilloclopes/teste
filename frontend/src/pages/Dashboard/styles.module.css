@@ -1,0 +1,17 @@
+.actionsRow {
+  margin-bottom: 24px;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.emptyStateIcon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.emptyStateCta {
+  margin-top: 16px;
+}

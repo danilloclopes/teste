@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { api } from '../services/api'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import { api } from '../../services/api'
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
+import styles from './styles.module.css'
 
 export default function Agendar() {
   const [animadores, setAnimadores] = useState([])
@@ -38,7 +39,7 @@ export default function Agendar() {
   return (
     <>
       <Header />
-      <div style={{ paddingTop: 80 }}>
+      <div className="pageWrapper">
         <div className="page-header">
           <div className="container">
             <h1>✨ Novo Agendamento</h1>
@@ -47,7 +48,7 @@ export default function Agendar() {
         </div>
 
         <div className="page-content">
-          <div className="container" style={{ maxWidth: 520 }}>
+          <div className="container formContainer">
             {sucesso && (
               <div className="alert alert-success">
                 ✅ Agendamento criado com sucesso! Redirecionando…
@@ -79,11 +80,10 @@ export default function Agendar() {
                   <label>Data e Hora</label>
                   <input
                     type="datetime-local"
-                    className="form-control"
+                    className={`form-control ${styles.dateInput}`}
                     value={dataHora}
                     onChange={e => setDataHora(e.target.value)}
                     required
-                    style={{ paddingLeft: '0.9rem' }}
                   />
                 </div>
 

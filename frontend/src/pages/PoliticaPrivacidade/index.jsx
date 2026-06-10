@@ -1,11 +1,11 @@
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
 
 export default function PoliticaPrivacidade() {
   return (
     <>
       <Header />
-      <div style={{ paddingTop: 80 }}>
+      <div className="pageWrapper">
         <div className="page-header">
           <div className="container">
             <h1>🛡️ Política de Privacidade</h1>
@@ -13,8 +13,8 @@ export default function PoliticaPrivacidade() {
           </div>
         </div>
         <div className="page-content">
-          <div className="container" style={{ maxWidth: 760 }}>
-            <div className="card" style={{ lineHeight: 1.8, color: 'var(--text-medium)' }}>
+          <div className="container contentContainer">
+            <div className="card contentCard">
               {[
                 ['1. Coleta de Dados', 'Coletamos apenas os dados necessários para o funcionamento do serviço: nome, e-mail e CPF. Não compartilhamos suas informações com terceiros sem sua autorização explícita.'],
                 ['2. Uso dos Dados', 'Seus dados são utilizados exclusivamente para criar e gerenciar sua conta, processar agendamentos e enviar comunicações relacionadas ao serviço.'],
@@ -23,8 +23,8 @@ export default function PoliticaPrivacidade() {
                 ['5. Seus Direitos', 'Você pode solicitar a exclusão ou atualização dos seus dados a qualquer momento através da página de perfil ou pelo e-mail contato@magicfest.com.br.'],
                 ['6. Contato', 'Para dúvidas sobre privacidade, entre em contato: contato@magicfest.com.br'],
               ].map(([title, text]) => (
-                <div key={title} style={{ marginBottom: 28 }}>
-                  <h2 style={{ fontFamily: 'var(--font-heading)', color: 'var(--text-dark)', marginBottom: 8 }}>{title}</h2>
+                <div key={title} className="section">
+                  <h2 className="sectionTitle">{title}</h2>
                   <p>{text}</p>
                 </div>
               ))}

@@ -1,0 +1,9 @@
+.senhaHint {
+  color: var(--text-light);
+  font-weight: 400;
+}
+
+.formActions {
+  display: flex;
+  gap: 12px;
+}

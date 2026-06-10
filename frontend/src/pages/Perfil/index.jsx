@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { api } from '../services/api'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import { api } from '../../services/api'
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
+import styles from './styles.module.css'
 
 export default function Perfil() {
   const [usuario, setUsuario] = useState(null)
@@ -21,7 +22,7 @@ export default function Perfil() {
   return (
     <>
       <Header />
-      <div style={{ paddingTop: 80 }}>
+      <div className="pageWrapper">
         <div className="page-header">
           <div className="container">
             <h1>👤 Meu Perfil</h1>
@@ -30,43 +31,37 @@ export default function Perfil() {
         </div>
 
         <div className="page-content">
-          <div className="container" style={{ maxWidth: 520 }}>
+          <div className="container formContainer">
             {erro && <div className="alert alert-error">⚠️ {erro}</div>}
 
             {usuario && (
               <div className="card">
-                <div style={{ textAlign: 'center', marginBottom: 32 }}>
-                  <div style={{
-                    width: 80, height: 80, borderRadius: '50%', margin: '0 auto 12px',
-                    background: 'linear-gradient(135deg, var(--primary-light), var(--accent-light))',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontSize: '2rem', fontWeight: 900, color: 'var(--primary-dark)',
-                    fontFamily: 'var(--font-heading)'
-                  }}>
+                <div className={styles.avatarSection}>
+                  <div className={styles.avatarIcon}>
                     {usuario.nome?.[0]?.toUpperCase()}
                   </div>
-                  <h2 style={{ fontFamily: 'var(--font-heading)', fontWeight: 900 }}>{usuario.nome}</h2>
+                  <h2 className={styles.userName}>{usuario.nome}</h2>
                 </div>
 
-                <table style={{ width: '100%' }}>
+                <table className={styles.infoTable}>
                   <tbody>
                     {[
                       ['E-mail', usuario.email],
                       ['CPF',   mascaraCpf(usuario.cpf)],
                     ].map(([label, val]) => (
                       <tr key={label}>
-                        <td style={{ fontWeight: 600, paddingBottom: 12, width: 80, color: 'var(--text-medium)', fontSize: '0.85rem' }}>{label}</td>
-                        <td style={{ paddingBottom: 12 }}>{val}</td>
+                        <td className={styles.infoLabel}>{label}</td>
+                        <td className={styles.infoValue}>{val}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
 
-                <div style={{ display: 'flex', gap: 12, marginTop: 24 }}>
-                  <Link to="/perfil/editar" className="btn btn-primary" style={{ flex: 1, justifyContent: 'center' }}>
+                <div className={styles.actions}>
+                  <Link to="/perfil/editar" className="btn btn-primary actionBtn">
                     ✏️ Editar perfil
                   </Link>
-                  <Link to="/dashboard" className="btn btn-outline" style={{ flex: 1, justifyContent: 'center' }}>
+                  <Link to="/dashboard" className="btn btn-outline actionBtn">
                     📅 Agendamentos
                   </Link>
                 </div>

@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { api } from '../services/api'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import { api } from '../../services/api'
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
+import styles from './styles.module.css'
 
 export default function EditarPerfil() {
   const [form, setForm]     = useState({ nome: '', email: '', senha: '' })
@@ -37,7 +38,7 @@ export default function EditarPerfil() {
   return (
     <>
       <Header />
-      <div style={{ paddingTop: 80 }}>
+      <div className="pageWrapper">
         <div className="page-header">
           <div className="container">
             <h1>✏️ Editar Perfil</h1>
@@ -46,7 +47,7 @@ export default function EditarPerfil() {
         </div>
 
         <div className="page-content">
-          <div className="container" style={{ maxWidth: 520 }}>
+          <div className="container formContainer">
             {sucesso && <div className="alert alert-success">✅ Perfil atualizado! Redirecionando…</div>}
             {erro    && <div className="alert alert-error">⚠️ {erro}</div>}
 
@@ -71,7 +72,7 @@ export default function EditarPerfil() {
                 </div>
 
                 <div className="form-group">
-                  <label>Nova senha <span style={{ color: 'var(--text-light)', fontWeight: 400 }}>(deixe em branco para manter)</span></label>
+                  <label>Nova senha <span className={styles.senhaHint}>(deixe em branco para manter)</span></label>
                   <div className="input-wrapper">
                     <span className="input-icon">🔒</span>
                     <input name="senha" type="password" className="form-control"
@@ -80,12 +81,11 @@ export default function EditarPerfil() {
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', gap: 12 }}>
-                  <button type="submit" className="btn btn-primary btn-lg" disabled={loading || sucesso}
-                    style={{ flex: 1, justifyContent: 'center' }}>
+                <div className={styles.formActions}>
+                  <button type="submit" className="btn btn-primary btn-lg actionBtn" disabled={loading || sucesso}>
                     {loading ? 'Salvando…' : 'Salvar alterações'}
                   </button>
-                  <Link to="/perfil" className="btn btn-outline btn-lg" style={{ flex: 1, justifyContent: 'center' }}>
+                  <Link to="/perfil" className="btn btn-outline btn-lg actionBtn">
                     Cancelar
                   </Link>
                 </div>
