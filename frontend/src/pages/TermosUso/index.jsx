@@ -1,5 +1,6 @@
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
+import styles from './styles.module.css'
 
 export default function TermosUso() {
   return (
@@ -13,8 +14,8 @@ export default function TermosUso() {
           </div>
         </div>
         <div className="page-content">
-          <div className="container contentContainer">
-            <div className="card contentCard">
+          <div className={`container ${styles.contentContainer}`}>
+            <div className={`card ${styles.contentCard}`}>
               {[
                 ['1. Aceitação dos Termos', 'Ao utilizar a plataforma MagicFest, você concorda com estes termos. Caso não concorde, não utilize os serviços.'],
                 ['2. Cadastro e Conta', 'Para realizar agendamentos é necessário criar uma conta com informações verdadeiras. Você é responsável pela segurança das suas credenciais.'],
@@ -23,8 +24,8 @@ export default function TermosUso() {
                 ['5. Modificações', 'Estes termos podem ser alterados a qualquer momento. As alterações entram em vigor imediatamente após publicação.'],
                 ['6. Contato', 'Para dúvidas sobre estes termos, entre em contato: contato@magicfest.com.br'],
               ].map(([title, text]) => (
-                <div key={title} className="section">
-                  <h2 className="sectionTitle">{title}</h2>
+                <div key={title} className={styles.section}>
+                  <h2 className={styles.sectionTitle}>{title}</h2>
                   <p>{text}</p>
                 </div>
               ))}

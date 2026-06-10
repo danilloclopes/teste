@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
+import styles from './styles.module.css'
 
 export default function Login() {
   const [email, setEmail]   = useState('')
@@ -25,15 +26,15 @@ export default function Login() {
   }
 
   return (
-    <main className="auth-page">
-      <div className="auth-card">
-        <div className="auth-logo">
-          <span className="logo-icon">🎭</span>
-          <span className="logo-text">MagicFest</span>
-          <p className="logo-sub">Personagens que encantam festas</p>
+    <main className={styles.authPage}>
+      <div className={styles.authCard}>
+        <div className={styles.authLogo}>
+          <span className={styles.logoIcon}>🎭</span>
+          <span className={styles.logoText}>MagicFest</span>
+          <p className={styles.logoSub}>Personagens que encantam festas</p>
         </div>
 
-        <h1 className="auth-title">Bem-vindo de volta!</h1>
+        <h1 className={styles.authTitle}>Bem-vindo de volta!</h1>
 
         {erro && (
           <div className="alert alert-error" role="alert">
@@ -79,12 +80,12 @@ export default function Login() {
           </button>
         </form>
 
-        <div className="divider">ou</div>
+        <div className={styles.divider}>ou</div>
 
-        <p className="auth-footer-text">
+        <p className={styles.authFooterText}>
           Ainda não tem conta? <Link to="/cadastro">Criar conta grátis</Link>
         </p>
-        <Link to="/" className="back-link">← Voltar para a página inicial</Link>
+        <Link to="/" className={styles.backLink}>← Voltar para a página inicial</Link>
       </div>
     </main>
   )

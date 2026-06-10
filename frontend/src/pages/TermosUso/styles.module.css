@@ -1,1 +1,18 @@
+.contentContainer {
+  max-width: 760px;
+}
 
+.contentCard {
+  line-height: 1.8;
+  color: var(--text-medium);
+}
+
+.section {
+  margin-bottom: 28px;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
