@@ -1,5 +1,6 @@
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
+import PageHeader from '../../components/PageHeader'
 import styles from './styles.module.css'
 
 export default function PoliticaPrivacidade() {
@@ -7,12 +8,10 @@ export default function PoliticaPrivacidade() {
     <>
       <Header />
       <div className="pageWrapper">
-        <div className="page-header">
-          <div className="container">
-            <h1>🛡️ Política de Privacidade</h1>
-            <p>Última atualização: Janeiro de 2025</p>
-          </div>
-        </div>
+        <PageHeader
+          title="🛡️ Política de Privacidade"
+          subtitle="Última atualização: Janeiro de 2025"
+        />
         <div className="page-content">
           <div className={`container ${styles.contentContainer}`}>
             <div className={`card ${styles.contentCard}`}>

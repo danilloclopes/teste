@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { api } from '../../services/api'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
+import PageHeader from '../../components/PageHeader'
+import Alert from '../../components/Alert'
 import styles from './styles.module.css'
 
 const STATUS_LABEL = {
@@ -34,12 +36,10 @@ export default function Dashboard() {
     <>
       <Header />
       <div className="pageWrapper">
-        <div className="page-header">
-          <div className="container">
-            <h1>📅 Meus Agendamentos</h1>
-            <p>Acompanhe o status das suas reservas de personagens.</p>
-          </div>
-        </div>
+        <PageHeader
+          title="📅 Meus Agendamentos"
+          subtitle="Acompanhe o status das suas reservas de personagens."
+        />
 
         <div className="page-content">
           <div className="container">
@@ -49,7 +49,7 @@ export default function Dashboard() {
 
             {loading && <div className="spinner"><span>⏳</span> Carregando…</div>}
 
-            {erro && <div className="alert alert-error">⚠️ {erro}</div>}
+            {erro && <Alert type="error">⚠️ {erro}</Alert>}
 
             {!loading && !erro && (
               <div className="card">

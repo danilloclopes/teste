@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { api } from '../../services/api'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
+import PageHeader from '../../components/PageHeader'
+import Alert from '../../components/Alert'
 import styles from './styles.module.css'
 
 export default function Perfil() {
@@ -23,16 +25,14 @@ export default function Perfil() {
     <>
       <Header />
       <div className="pageWrapper">
-        <div className="page-header">
-          <div className="container">
-            <h1>👤 Meu Perfil</h1>
-            <p>Veja e gerencie as informações da sua conta.</p>
-          </div>
-        </div>
+        <PageHeader
+          title="👤 Meu Perfil"
+          subtitle="Veja e gerencie as informações da sua conta."
+        />
 
         <div className="page-content">
           <div className="container formContainer">
-            {erro && <div className="alert alert-error">⚠️ {erro}</div>}
+            {erro && <Alert type="error">⚠️ {erro}</Alert>}
 
             {usuario && (
               <div className="card">

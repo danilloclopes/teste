@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { api } from '../../services/api'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
+import PageHeader from '../../components/PageHeader'
+import Alert from '../../components/Alert'
 import styles from './styles.module.css'
 
 export default function Agendar() {
@@ -40,22 +42,15 @@ export default function Agendar() {
     <>
       <Header />
       <div className="pageWrapper">
-        <div className="page-header">
-          <div className="container">
-            <h1>✨ Novo Agendamento</h1>
-            <p>Escolha o personagem e confirme a data da festa.</p>
-          </div>
-        </div>
+        <PageHeader
+          title="✨ Novo Agendamento"
+          subtitle="Escolha o personagem e confirme a data da festa."
+        />
 
         <div className="page-content">
           <div className="container formContainer">
-            {sucesso && (
-              <div className="alert alert-success">
-                ✅ Agendamento criado com sucesso! Redirecionando…
-              </div>
-            )}
-
-            {erro && <div className="alert alert-error">⚠️ {erro}</div>}
+            {sucesso && <Alert type="success">✅ Agendamento criado com sucesso! Redirecionando…</Alert>}
+            {erro    && <Alert type="error">⚠️ {erro}</Alert>}
 
             <div className="card">
               <form onSubmit={handleSubmit}>

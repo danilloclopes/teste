@@ -1,11 +1,13 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { api } from '../../services/api'
-import styles from './styles.module.css'
+import AuthCard from '../../components/AuthCard'
+import Alert from '../../components/Alert'
+import InputField from '../../components/InputField'
 
 export default function Cadastro() {
-  const [form, setForm]     = useState({ nome: '', email: '', senha: '', cpf: '' })
-  const [erro, setErro]     = useState('')
+  const [form, setForm]       = useState({ nome: '', email: '', senha: '', cpf: '' })
+  const [erro, setErro]       = useState('')
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
@@ -28,71 +30,59 @@ export default function Cadastro() {
   }
 
   return (
-    <main className={styles.authPage}>
-      <div className={styles.authCard}>
-        <div className={styles.authLogo}>
-          <span className={styles.logoIcon}>🎭</span>
-          <span className={styles.logoText}>MagicFest</span>
-          <p className={styles.logoSub}>Personagens que encantam festas</p>
-        </div>
+    <AuthCard
+      title="Criar minha conta"
+      footerText="Já tem uma conta?"
+      footerLink="/login"
+      footerLinkText="Entrar"
+    >
+      {erro && <Alert type="error">⚠️ {erro}</Alert>}
 
-        <h1 className={styles.authTitle}>Criar minha conta</h1>
-
-        {erro && (
-          <div className="alert alert-error" role="alert">
-            <span>⚠️</span> {erro}
-          </div>
-        )}
-
-        <form onSubmit={handleSubmit} noValidate>
-          <div className="form-group">
-            <label>Nome completo</label>
-            <div className="input-wrapper">
-              <span className="input-icon">👤</span>
-              <input name="nome" type="text" className="form-control" placeholder="Seu nome"
-                value={form.nome} onChange={handleChange} required />
-            </div>
-          </div>
-
-          <div className="form-group">
-            <label>E-mail</label>
-            <div className="input-wrapper">
-              <span className="input-icon">📧</span>
-              <input name="email" type="email" className="form-control" placeholder="seu@email.com"
-                value={form.email} onChange={handleChange} required />
-            </div>
-          </div>
-
-          <div className="form-group">
-            <label>CPF</label>
-            <div className="input-wrapper">
-              <span className="input-icon">🪪</span>
-              <input name="cpf" type="text" className="form-control" placeholder="000.000.000-00"
-                value={form.cpf} onChange={handleChange} required />
-            </div>
-          </div>
-
-          <div className="form-group">
-            <label>Senha</label>
-            <div className="input-wrapper">
-              <span className="input-icon">🔒</span>
-              <input name="senha" type="password" className="form-control" placeholder="Crie uma senha"
-                value={form.senha} onChange={handleChange} required />
-            </div>
-          </div>
-
-          <button type="submit" className="btn-auth" disabled={loading}>
-            {loading ? 'Criando conta…' : 'Criar conta grátis'}
-          </button>
-        </form>
-
-        <div className={styles.divider}>ou</div>
-
-        <p className={styles.authFooterText}>
-          Já tem uma conta? <Link to="/login">Entrar</Link>
-        </p>
-        <Link to="/" className={styles.backLink}>← Voltar para a página inicial</Link>
-      </div>
-    </main>
+      <form onSubmit={handleSubmit} noValidate>
+        <InputField
+          label="Nome completo"
+          icon="👤"
+          name="nome"
+          type="text"
+          placeholder="Seu nome"
+          value={form.nome}
+          onChange={handleChange}
+          required
+        />
+        <InputField
+          label="E-mail"
+          icon="📧"
+          name="email"
+          type="email"
+          placeholder="seu@email.com"
+          value={form.email}
+          onChange={handleChange}
+          required
+        />
+        <InputField
+          label="CPF"
+          icon="🪪"
+          name="cpf"
+          type="text"
+          placeholder="000.000.000-00"
+          value={form.cpf}
+          onChange={handleChange}
+          required
+        />
+        <InputField
+          label="Senha"
+          icon="🔒"
+          name="senha"
+          type="password"
+          placeholder="Crie uma senha"
+          value={form.senha}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit" className="btn-auth" disabled={loading}>
+          {loading ? 'Criando conta…' : 'Criar conta grátis'}
+        </button>
+      </form>
+    </AuthCard>
   )
 }

@@ -3,11 +3,14 @@ import { Link, useNavigate } from 'react-router-dom'
 import { api } from '../../services/api'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
+import PageHeader from '../../components/PageHeader'
+import Alert from '../../components/Alert'
+import InputField from '../../components/InputField'
 import styles from './styles.module.css'
 
 export default function EditarPerfil() {
-  const [form, setForm]     = useState({ nome: '', email: '', senha: '' })
-  const [erro, setErro]     = useState('')
+  const [form, setForm]       = useState({ nome: '', email: '', senha: '' })
+  const [erro, setErro]       = useState('')
   const [sucesso, setSucesso] = useState(false)
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
@@ -39,47 +42,45 @@ export default function EditarPerfil() {
     <>
       <Header />
       <div className="pageWrapper">
-        <div className="page-header">
-          <div className="container">
-            <h1>✏️ Editar Perfil</h1>
-            <p>Atualize suas informações pessoais.</p>
-          </div>
-        </div>
+        <PageHeader
+          title="✏️ Editar Perfil"
+          subtitle="Atualize suas informações pessoais."
+        />
 
         <div className="page-content">
           <div className="container formContainer">
-            {sucesso && <div className="alert alert-success">✅ Perfil atualizado! Redirecionando…</div>}
-            {erro    && <div className="alert alert-error">⚠️ {erro}</div>}
+            {sucesso && <Alert type="success">✅ Perfil atualizado! Redirecionando…</Alert>}
+            {erro    && <Alert type="error">⚠️ {erro}</Alert>}
 
             <div className="card">
               <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <label>Nome completo</label>
-                  <div className="input-wrapper">
-                    <span className="input-icon">👤</span>
-                    <input name="nome" type="text" className="form-control"
-                      value={form.nome} onChange={handleChange} required />
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <label>E-mail</label>
-                  <div className="input-wrapper">
-                    <span className="input-icon">📧</span>
-                    <input name="email" type="email" className="form-control"
-                      value={form.email} onChange={handleChange} required />
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <label>Nova senha <span className={styles.senhaHint}>(deixe em branco para manter)</span></label>
-                  <div className="input-wrapper">
-                    <span className="input-icon">🔒</span>
-                    <input name="senha" type="password" className="form-control"
-                      placeholder="Nova senha"
-                      value={form.senha} onChange={handleChange} />
-                  </div>
-                </div>
+                <InputField
+                  label="Nome completo"
+                  icon="👤"
+                  name="nome"
+                  type="text"
+                  value={form.nome}
+                  onChange={handleChange}
+                  required
+                />
+                <InputField
+                  label="E-mail"
+                  icon="📧"
+                  name="email"
+                  type="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  required
+                />
+                <InputField
+                  label={<>Nova senha <span className={styles.senhaHint}>(deixe em branco para manter)</span></>}
+                  icon="🔒"
+                  name="senha"
+                  type="password"
+                  placeholder="Nova senha"
+                  value={form.senha}
+                  onChange={handleChange}
+                />
 
                 <div className={styles.formActions}>
                   <button type="submit" className="btn btn-primary btn-lg actionBtn" disabled={loading || sucesso}>

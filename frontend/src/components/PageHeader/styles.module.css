@@ -1,0 +1,16 @@
+.pageHeader {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  color: var(--white);
+  padding: 40px 0 32px;
+}
+
+.pageHeader h1 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 2rem;
+}
+
+.pageHeader p {
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 6px;
+}
