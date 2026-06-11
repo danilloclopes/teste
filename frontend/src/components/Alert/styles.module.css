@@ -1,21 +1,21 @@
 .alert {
-  padding: 0.75rem 1rem;
-  border-radius: 10px;
-  font-size: 0.85rem;
-  margin-bottom: 1.25rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+	padding: 0.75rem 1rem;
+	border-radius: 10px;
+	font-size: 0.85rem;
+	margin-bottom: 1.25rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
 }
 
 .error {
-  background: #fef2f2;
-  border: 1px solid #fecaca;
-  color: #b91c1c;
+	background: #fef2f2;
+	border: 1px solid #fecaca;
+	color: #b91c1c;
 }
 
 .success {
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  color: #15803d;
+	background: #f0fdf4;
+	border: 1px solid #bbf7d0;
+	color: #15803d;
 }

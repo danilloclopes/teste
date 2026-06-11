@@ -1,64 +1,69 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import SocialDisplay from './SocialDisplay'
+import FooterInfoText from "./FooterInfoText";
 
 export default function Footer() {
-  const year = new Date().getFullYear()
+	const year = new Date().getFullYear();
 
-  return (
-    <footer className="footer">
-      <div className="container">
-        <div className="footer-grid">
-          <div className="footer-brand">
-            <Link to="/" className="nav-logo footer-logo">
-              <span className="logo-icon">🎭</span>
-              MagicFest
-            </Link>
-            <p className="footer-desc">
-              Transformamos festas em memórias eternas. Personagens de qualidade, atendimento
-              humanizado e uma experiência que toda criança merece.
-            </p>
-            <div className="footer-social">
-              <span className="social-link" title="Instagram">📸</span>
-              <span className="social-link" title="Facebook">👍</span>
-              <span className="social-link" title="WhatsApp">💬</span>
-            </div>
-          </div>
+	return (
+		<footer className="footer">
+			<div className="container">
+				<section className="footer-grid">
+					<div className="footer-brand">
+						<Link
+							to="/"
+							className="nav-logo footer-logo">
+							<span className="logo-icon">🎭</span>
+							MagicFest
+						</Link>
+						<p className="footer-desc">
+							Transformamos festas em memórias eternas.
+							Personagens de qualidade, atendimento humanizado e
+							uma experiência que toda criança merece.
+						</p>
+						<div className="footer-social">
+                            <SocialDisplay title={"Instagram"} icon={"📸"}/>
+                            <SocialDisplay title={"Facebook"} icon={"👍"}/>
+                            <SocialDisplay title={"WhatsApp"} icon={"💬"}/>
+						</div>
+					</div>
 
-          <div>
-            <h3 className="footer-col-title">Navegação</h3>
-            <ul className="footer-links">
-              <li><Link to="/">Início</Link></li>
-              <li><a href="/#como-funciona">Como Funciona</a></li>
-              <li><a href="/#depoimentos">Depoimentos</a></li>
-            </ul>
-          </div>
+					<div>
+						<h3 className="footer-col-title">Navegação</h3>
+						<nav className="footer-links">
+                            <Link to="/">Início</Link>
+                            <Link to="/#como-funciona">Como Funciona</Link>
+                            <Link to="/#depoimentos">Depoimentos</Link>
+						</nav>
+					</div>
 
-          <div>
-            <h3 className="footer-col-title">Conta</h3>
-            <ul className="footer-links">
-              <li><Link to="/cadastro">Criar conta</Link></li>
-              <li><Link to="/login">Entrar</Link></li>
-              <li><Link to="/agendar">Fazer reserva</Link></li>
-              <li><Link to="/perfil">Meu perfil</Link></li>
-            </ul>
-          </div>
+					<div>
+						<h3 className="footer-col-title">Conta</h3>
+						<nav className="footer-links">
+                            <Link to="/cadastro">Criar conta</Link>
+                            <Link to="/login">Entrar</Link>
+                            <Link to="/agendar">Fazer reserva</Link>
+                            <Link to="/perfil">Meu perfil</Link>
+						</nav>
+					</div>
 
-          <div>
-            <h3 className="footer-col-title">Contato</h3>
-            <p className="footer-contact-item"><span>📍</span><span>Sua Cidade, Estado</span></p>
-            <p className="footer-contact-item"><span>📧</span><span>contato@magicfest.com.br</span></p>
-            <p className="footer-contact-item"><span>📞</span><span>(00) 0 0000-0000</span></p>
-            <p className="footer-contact-item"><span>⏰</span><span>Seg–Sáb, 8h–20h</span></p>
-          </div>
-        </div>
+					<div>
+						<h3 className="footer-col-title">Contato</h3>
+                        <FooterInfoText icon={"📍"} text={"Sua Cidade, Estado"}/>
+                        <FooterInfoText icon={"📧"} text={"contato@magicfest.com.br"}/>
+                        <FooterInfoText icon={"📞"} text={"(00) 0 0000-0000"}/>
+                        <FooterInfoText icon={"⏰"} text={"Seg–Sáb, 8h–20h"}/>
+					</div>
+				</section>
 
-        <div className="footer-bottom">
-          <p className="footer-copyright">© {year} MagicFest. Todos os direitos reservados.</p>
-          <nav className="footer-bottom-links">
-            <Link to="/politica-de-privacidade">Política de Privacidade</Link>
-            <Link to="/termos-de-uso">Termos de Uso</Link>
-          </nav>
-        </div>
-      </div>
-    </footer>
-  )
+				<div className="footer-bottom">
+					<p className="footer-copyright">© {year} MagicFest. Todos os direitos reservados.</p>
+					<nav className="footer-bottom-links">
+						<Link to="/politica-de-privacidade">Política de Privacidade</Link>
+						<Link to="/termos-de-uso">Termos de Uso</Link>
+					</nav>
+				</div>
+			</div>
+		</footer>
+	);
 }

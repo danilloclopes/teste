@@ -1,12 +1,12 @@
-import styles from './styles.module.css'
+import styles from "./styles.module.css";
 
 export default function PageHeader({ title, subtitle }) {
-  return (
-    <header className={styles.pageHeader}>
-      <div className="container">
-        <h1>{title}</h1>
-        {subtitle && <p>{subtitle}</p>}
-      </div>
-    </header>
-  )
+	return (
+		<header className={styles.pageHeader}>
+			<div className="container">
+				<h1>{title}</h1>
+				{subtitle && <p>{subtitle}</p>}
+			</div>
+		</header>
+	);
 }

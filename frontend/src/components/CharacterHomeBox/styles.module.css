@@ -1,0 +1,91 @@
+.charCard {
+	background: var(--white);
+	border-radius: var(--radius-lg);
+	overflow: hidden;
+	box-shadow: 0 4px 20px var(--shadow);
+	transition:
+		transform var(--transition),
+		box-shadow var(--transition);
+}
+.charCard:hover {
+	transform: translateY(-8px);
+	box-shadow: 0 20px 50px var(--shadow-hover);
+}
+.charCardImg {
+	height: 160px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	background: linear-gradient(
+		135deg,
+		var(--primary-light),
+		var(--accent-light)
+	);
+}
+.charEmoji {
+	font-size: 4rem;
+}
+.charBadge {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	background: var(--accent);
+	color: var(--white);
+	font-family: var(--font-heading);
+	font-weight: 800;
+	font-size: 0.7rem;
+	padding: 4px 10px;
+	border-radius: var(--radius-full);
+}
+.charCardBody {
+	padding: 20px;
+}
+.charCategory {
+	font-size: 0.75rem;
+	font-weight: 600;
+	color: var(--primary-light);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	margin-bottom: 4px;
+}
+.charName {
+	font-family: var(--font-heading);
+	font-weight: 900;
+	font-size: 1.1rem;
+	margin-bottom: 12px;
+}
+.charCardFooter {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.charPrice {
+	display: flex;
+	flex-direction: column;
+}
+.charPriceLabel {
+	font-size: 0.7rem;
+	color: var(--text-light);
+}
+.charPriceValue {
+	font-family: var(--font-heading);
+	font-weight: 900;
+	font-size: 1.2rem;
+	color: var(--primary);
+}
+.charBtn {
+	padding: 8px 18px;
+	background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+	color: var(--white);
+	border: none;
+	border-radius: var(--radius-full);
+	font-family: var(--font-heading);
+	font-weight: 700;
+	font-size: 0.85rem;
+	cursor: pointer;
+	transition: var(--transition);
+}
+.charBtn:hover {
+	transform: scale(1.05);
+}
