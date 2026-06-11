@@ -49,6 +49,7 @@ export const CHARS = [
 	},
 ];
 
+
 export const BENEFITS = [
 	{
 		icon: "🎭",
@@ -71,6 +72,7 @@ export const BENEFITS = [
 		desc: "Pacotes para todos os orçamentos, sem taxas escondidas.",
 	},
 ];
+
 
 export const TESTIMONIALS = [
 	{
@@ -95,3 +97,59 @@ export const TESTIMONIALS = [
 		initials: "LF",
 	},
 ];
+
+
+export const TERMOSDEUSO = [
+    [
+        "1. Aceitação dos Termos",
+        "Ao utilizar a plataforma MagicFest, você concorda com estes termos. Caso não concorde, não utilize os serviços.",
+    ],
+    [
+        "2. Cadastro e Conta",
+        "Para realizar agendamentos é necessário criar uma conta com informações verdadeiras. Você é responsável pela segurança das suas credenciais.",
+    ],
+    [
+        "3. Agendamentos",
+        "Os agendamentos estão sujeitos à disponibilidade dos animadores. A MagicFest não se responsabiliza por cancelamentos causados por força maior.",
+    ],
+    [
+        "4. Conduta",
+        "É proibido utilizar a plataforma para fins ilícitos, tentativas de fraude ou qualquer atividade que prejudique outros usuários.",
+    ],
+    [
+        "5. Modificações",
+        "Estes termos podem ser alterados a qualquer momento. As alterações entram em vigor imediatamente após publicação.",
+    ],
+    [
+        "6. Contato",
+        "Para dúvidas sobre estes termos, entre em contato: contato@magicfest.com.br",
+    ],
+]
+
+
+export const POLITICAPRIVACIDADE = [
+    [
+        "1. Coleta de Dados",
+        "Coletamos apenas os dados necessários para o funcionamento do serviço: nome, e-mail e CPF. Não compartilhamos suas informações com terceiros sem sua autorização explícita.",
+    ],
+    [
+        "2. Uso dos Dados",
+        "Seus dados são utilizados exclusivamente para criar e gerenciar sua conta, processar agendamentos e enviar comunicações relacionadas ao serviço.",
+    ],
+    [
+        "3. Segurança",
+        "Utilizamos criptografia SHA-256 para armazenamento de senhas. Sessões são protegidas por cookies HttpOnly. Aplicamos controle de acesso em todas as rotas autenticadas.",
+    ],
+    [
+        "4. Cookies",
+        "Utilizamos cookies de sessão (JSESSIONID) para manter você autenticado. Não utilizamos cookies de rastreamento ou publicidade.",
+    ],
+    [
+        "5. Seus Direitos",
+        "Você pode solicitar a exclusão ou atualização dos seus dados a qualquer momento através da página de perfil ou pelo e-mail contato@magicfest.com.br.",
+    ],
+    [
+        "6. Contato",
+        "Para dúvidas sobre privacidade, entre em contato: contato@magicfest.com.br",
+    ],
+]
