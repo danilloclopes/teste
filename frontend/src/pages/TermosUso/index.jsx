@@ -7,14 +7,14 @@ export default function TermosUso() {
   return (
     <>
       <Header />
-      <div className="pageWrapper">
+      <main className="pageWrapper">
         <PageHeader
           title="📋 Termos de Uso"
           subtitle="Última atualização: Janeiro de 2025"
         />
         <div className="page-content">
           <div className={`container ${styles.contentContainer}`}>
-            <div className={`card ${styles.contentCard}`}>
+            <article className={`card ${styles.contentCard}`}>
               {[
                 ['1. Aceitação dos Termos', 'Ao utilizar a plataforma MagicFest, você concorda com estes termos. Caso não concorde, não utilize os serviços.'],
                 ['2. Cadastro e Conta', 'Para realizar agendamentos é necessário criar uma conta com informações verdadeiras. Você é responsável pela segurança das suas credenciais.'],
@@ -23,15 +23,15 @@ export default function TermosUso() {
                 ['5. Modificações', 'Estes termos podem ser alterados a qualquer momento. As alterações entram em vigor imediatamente após publicação.'],
                 ['6. Contato', 'Para dúvidas sobre estes termos, entre em contato: contato@magicfest.com.br'],
               ].map(([title, text]) => (
-                <div key={title} className={styles.section}>
+                <section key={title} className={styles.section}>
                   <h2 className={styles.sectionTitle}>{title}</h2>
                   <p>{text}</p>
-                </div>
+                </section>
               ))}
-            </div>
+            </article>
           </div>
         </div>
-      </div>
+      </main>
       <Footer />
     </>
   )

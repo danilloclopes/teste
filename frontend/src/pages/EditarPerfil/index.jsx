@@ -41,7 +41,7 @@ export default function EditarPerfil() {
   return (
     <>
       <Header />
-      <div className="pageWrapper">
+      <main className="pageWrapper">
         <PageHeader
           title="✏️ Editar Perfil"
           subtitle="Atualize suas informações pessoais."
@@ -94,7 +94,7 @@ export default function EditarPerfil() {
             </div>
           </div>
         </div>
-      </div>
+      </main>
       <Footer />
     </>
   )

@@ -28,7 +28,7 @@ export default function Home() {
         <div className="container">
           <div className={styles.heroInner}>
             <div className={styles.heroContent}>
-              <div className={styles.heroBadge}><span className={styles.dot} />Mais de 500 festas realizadas</div>
+              <span className={styles.heroBadge}><span className={styles.dot} />Mais de 500 festas realizadas</span>
               <h1 className={styles.heroTitle}>
                 Transforme a festa
                 <span className={styles.highlight}>em um sonho</span>
@@ -56,7 +56,7 @@ export default function Home() {
                 {[['👸','Princesa','Infantil'],['🦸','Super-herói','Ação'],['🐭','Animados','Kids'],['🧙','Fantasia','Temático']].map(([e,n,t]) => (
                   <div className={styles.heroCharCard} key={n}>
                     <span className={styles.heroCharEmoji}>{e}</span>
-                    <div className={styles.heroCharName}>{n}</div>
+                    <p className={styles.heroCharName}>{n}</p>
                     <span className={styles.heroCharTag}>{t}</span>
                   </div>
                 ))}
@@ -81,8 +81,8 @@ export default function Home() {
               { n: 3, icon: '🎉', title: 'Curta a magia!',       desc: 'Nosso personagem chega na hora certa e pronto para encantar todas as crianças!' },
             ].map(s => (
               <div className={styles.stepCard} key={s.n}>
-                <div className={styles.stepNumber}>{s.n}</div>
-                <div className={styles.stepIcon}>{s.icon}</div>
+                <span className={styles.stepNumber}>{s.n}</span>
+                <span className={styles.stepIcon}>{s.icon}</span>
                 <h3 className={styles.stepTitle}>{s.title}</h3>
                 <p className={styles.stepDesc}>{s.desc}</p>
               </div>
@@ -101,23 +101,23 @@ export default function Home() {
           </div>
           <div className={styles.charsGrid}>
             {CHARS.map(c => (
-              <div className={styles.charCard} key={c.name}>
-                <div className={styles.charCardImg}>
+              <article className={styles.charCard} key={c.name}>
+                <figure className={styles.charCardImg}>
                   <span className={styles.charEmoji}>{c.emoji}</span>
                   {c.badge && <span className={styles.charBadge}>{c.badge}</span>}
-                </div>
+                </figure>
                 <div className={styles.charCardBody}>
-                  <div className={styles.charCategory}>{c.cat}</div>
+                  <p className={styles.charCategory}>{c.cat}</p>
                   <h3 className={styles.charName}>{c.name}</h3>
-                  <div className={styles.charCardFooter}>
-                    <div className={styles.charPrice}>
+                  <footer className={styles.charCardFooter}>
+                    <p className={styles.charPrice}>
                       <span className={styles.charPriceLabel}>A partir de</span>
                       <span className={styles.charPriceValue}>R$ {c.price}</span>
-                    </div>
+                    </p>
                     <button className={styles.charBtn} onClick={handleReservar}>Reservar</button>
-                  </div>
+                  </footer>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
           <div className={styles.charsCta}>
@@ -140,11 +140,11 @@ export default function Home() {
           </div>
           <div className={styles.benefitsGrid}>
             {BENEFITS.map(b => (
-              <div className={styles.benefitCard} key={b.title}>
+              <article className={styles.benefitCard} key={b.title}>
                 <span className={styles.benefitIcon}>{b.icon}</span>
                 <h3 className={styles.benefitTitle}>{b.title}</h3>
                 <p className={styles.benefitDesc}>{b.desc}</p>
-              </div>
+              </article>
             ))}
           </div>
         </div>
@@ -160,17 +160,17 @@ export default function Home() {
           </div>
           <div className={styles.testimonialsGrid}>
             {TESTIMONIALS.map(t => (
-              <div className={styles.testimonialCard} key={t.name}>
-                <div className={styles.stars}>{'★'.repeat(t.stars)}</div>
+              <article className={styles.testimonialCard} key={t.name}>
+                <span className={styles.stars}>{'★'.repeat(t.stars)}</span>
                 <p className={styles.testimonialText}>{t.text}</p>
-                <div className={styles.testimonialAuthor}>
-                  <div className={styles.authorAvatar}>{t.initials}</div>
+                <footer className={styles.testimonialAuthor}>
+                  <span className={styles.authorAvatar}>{t.initials}</span>
                   <div>
-                    <div className={styles.authorName}>{t.name}</div>
-                    <div className={styles.authorRole}>{t.role}</div>
+                    <p className={styles.authorName}>{t.name}</p>
+                    <p className={styles.authorRole}>{t.role}</p>
                   </div>
-                </div>
-              </div>
+                </footer>
+              </article>
             ))}
           </div>
         </div>

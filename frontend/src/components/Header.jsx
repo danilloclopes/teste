@@ -24,7 +24,7 @@ export default function Header() {
       <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
         <div className="container navbar-inner">
           <Link to="/" className="nav-logo">
-            <div className="logo-icon">🎭</div>
+            <span className="logo-icon">🎭</span>
             MagicFest
           </Link>
 

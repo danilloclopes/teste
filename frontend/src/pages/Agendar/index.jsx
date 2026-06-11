@@ -41,7 +41,7 @@ export default function Agendar() {
   return (
     <>
       <Header />
-      <div className="pageWrapper">
+      <main className="pageWrapper">
         <PageHeader
           title="✨ Novo Agendamento"
           subtitle="Escolha o personagem e confirme a data da festa."
@@ -89,7 +89,7 @@ export default function Agendar() {
             </div>
           </div>
         </div>
-      </div>
+      </main>
       <Footer />
     </>
   )

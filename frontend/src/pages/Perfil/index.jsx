@@ -24,7 +24,7 @@ export default function Perfil() {
   return (
     <>
       <Header />
-      <div className="pageWrapper">
+      <main className="pageWrapper">
         <PageHeader
           title="👤 Meu Perfil"
           subtitle="Veja e gerencie as informações da sua conta."
@@ -36,12 +36,12 @@ export default function Perfil() {
 
             {usuario && (
               <div className="card">
-                <div className={styles.avatarSection}>
-                  <div className={styles.avatarIcon}>
+                <section className={styles.avatarSection}>
+                  <span className={styles.avatarIcon}>
                     {usuario.nome?.[0]?.toUpperCase()}
-                  </div>
+                  </span>
                   <h2 className={styles.userName}>{usuario.nome}</h2>
-                </div>
+                </section>
 
                 <table className={styles.infoTable}>
                   <tbody>
@@ -57,19 +57,19 @@ export default function Perfil() {
                   </tbody>
                 </table>
 
-                <div className={styles.actions}>
+                <nav className={styles.actions}>
                   <Link to="/perfil/editar" className="btn btn-primary actionBtn">
                     ✏️ Editar perfil
                   </Link>
                   <Link to="/dashboard" className="btn btn-outline actionBtn">
                     📅 Agendamentos
                   </Link>
-                </div>
+                </nav>
               </div>
             )}
           </div>
         </div>
-      </div>
+      </main>
       <Footer />
     </>
   )

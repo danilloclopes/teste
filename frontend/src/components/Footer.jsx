@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <Link to="/" className="nav-logo footer-logo">
-              <div className="logo-icon">🎭</div>
+              <span className="logo-icon">🎭</span>
               MagicFest
             </Link>
             <p className="footer-desc">
@@ -24,7 +24,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <div className="footer-col-title">Navegação</div>
+            <h3 className="footer-col-title">Navegação</h3>
             <ul className="footer-links">
               <li><Link to="/">Início</Link></li>
               <li><a href="/#como-funciona">Como Funciona</a></li>
@@ -33,7 +33,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <div className="footer-col-title">Conta</div>
+            <h3 className="footer-col-title">Conta</h3>
             <ul className="footer-links">
               <li><Link to="/cadastro">Criar conta</Link></li>
               <li><Link to="/login">Entrar</Link></li>
@@ -43,20 +43,20 @@ export default function Footer() {
           </div>
 
           <div>
-            <div className="footer-col-title">Contato</div>
-            <div className="footer-contact-item"><span>📍</span><span>Sua Cidade, Estado</span></div>
-            <div className="footer-contact-item"><span>📧</span><span>contato@magicfest.com.br</span></div>
-            <div className="footer-contact-item"><span>📞</span><span>(00) 0 0000-0000</span></div>
-            <div className="footer-contact-item"><span>⏰</span><span>Seg–Sáb, 8h–20h</span></div>
+            <h3 className="footer-col-title">Contato</h3>
+            <p className="footer-contact-item"><span>📍</span><span>Sua Cidade, Estado</span></p>
+            <p className="footer-contact-item"><span>📧</span><span>contato@magicfest.com.br</span></p>
+            <p className="footer-contact-item"><span>📞</span><span>(00) 0 0000-0000</span></p>
+            <p className="footer-contact-item"><span>⏰</span><span>Seg–Sáb, 8h–20h</span></p>
           </div>
         </div>
 
         <div className="footer-bottom">
           <p className="footer-copyright">© {year} MagicFest. Todos os direitos reservados.</p>
-          <div className="footer-bottom-links">
+          <nav className="footer-bottom-links">
             <Link to="/politica-de-privacidade">Política de Privacidade</Link>
             <Link to="/termos-de-uso">Termos de Uso</Link>
-          </div>
+          </nav>
         </div>
       </div>
     </footer>

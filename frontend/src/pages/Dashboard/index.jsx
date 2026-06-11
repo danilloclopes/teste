@@ -35,7 +35,7 @@ export default function Dashboard() {
   return (
     <>
       <Header />
-      <div className="pageWrapper">
+      <main className="pageWrapper">
         <PageHeader
           title="📅 Meus Agendamentos"
           subtitle="Acompanhe o status das suas reservas de personagens."
@@ -55,7 +55,7 @@ export default function Dashboard() {
               <div className="card">
                 {agendamentos.length === 0 ? (
                   <div className={styles.emptyState}>
-                    <div className={styles.emptyStateIcon}>🎭</div>
+                    <span className={styles.emptyStateIcon}>🎭</span>
                     <p>Nenhum agendamento encontrado.</p>
                     <Link to="/agendar" className={`btn btn-primary ${styles.emptyStateCta}`}>
                       Fazer minha primeira reserva
@@ -94,7 +94,7 @@ export default function Dashboard() {
             )}
           </div>
         </div>
-      </div>
+      </main>
       <Footer />
     </>
   )
