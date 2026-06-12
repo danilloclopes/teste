@@ -28,8 +28,8 @@ public class AuthServlet extends HttpServlet {
         String path = request.getPathInfo();
 
         if ("/me".equals(path)) {
-            HttpSession session     = request.getSession(false);
-            Usuario     usuarioLogado = session != null ? (Usuario) session.getAttribute("usuarioLogado") : null;
+            HttpSession session = request.getSession(false);
+            Usuario usuarioLogado = session != null ? (Usuario) session.getAttribute("usuarioLogado") : null;
 
             if (usuarioLogado == null) {
                 JsonUtil.sendError(response, HttpServletResponse.SC_UNAUTHORIZED, "Não autenticado");
@@ -37,10 +37,9 @@ public class AuthServlet extends HttpServlet {
             }
 
             JsonUtil.sendOk(response, Map.of(
-                    "id",    usuarioLogado.getId(),
-                    "nome",  usuarioLogado.getNome(),
-                    "email", usuarioLogado.getEmail()
-            ));
+                    "id", usuarioLogado.getId(),
+                    "nome", usuarioLogado.getNome(),
+                    "email", usuarioLogado.getEmail()));
         } else {
             JsonUtil.sendError(response, HttpServletResponse.SC_NOT_FOUND, "Rota não encontrada");
         }
@@ -65,9 +64,9 @@ public class AuthServlet extends HttpServlet {
 
     private void handleLogin(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
-            Map<?, ?> body     = JsonUtil.parse(request, Map.class);
-            String    email    = (String) body.get("email");
-            String    senha    = (String) body.get("senha");
+            Map<?, ?> body = JsonUtil.parse(request, Map.class);
+            String email = (String) body.get("email");
+            String senha = (String) body.get("senha");
 
             Usuario usuario = authService.login(email, senha);
 
@@ -75,10 +74,9 @@ public class AuthServlet extends HttpServlet {
             session.setAttribute("usuarioLogado", usuario);
 
             JsonUtil.sendOk(response, Map.of(
-                    "id",    usuario.getId(),
-                    "nome",  usuario.getNome(),
-                    "email", usuario.getEmail()
-            ));
+                    "id", usuario.getId(),
+                    "nome", usuario.getNome(),
+                    "email", usuario.getEmail()));
         } catch (Exception e) {
             JsonUtil.sendError(response, HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
         }
@@ -89,7 +87,7 @@ public class AuthServlet extends HttpServlet {
             Map<?, ?> body = JsonUtil.parse(request, Map.class);
 
             Usuario usuario = new Usuario();
-            usuario.setNome((String)  body.get("nome"));
+            usuario.setNome((String) body.get("nome"));
             usuario.setEmail((String) body.get("email"));
             usuario.setSenha((String) body.get("senha"));
             String cpf = (String) body.get("cpf");
@@ -106,10 +104,11 @@ public class AuthServlet extends HttpServlet {
 
     private void handleLogout(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession(false);
-        if (session != null) session.invalidate();
+        if (session != null)
+            session.invalidate();
 
         Cookie cookie = new Cookie("JSESSIONID", "");
-        String path   = request.getContextPath();
+        String path = request.getContextPath();
         cookie.setPath(path.isEmpty() ? "/" : path);
         cookie.setMaxAge(0);
         cookie.setHttpOnly(true);

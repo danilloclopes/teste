@@ -1,12 +1,12 @@
 .inputWrapper {
-	position: relative;
+  position: relative;
 }
 
 .inputIcon {
-	position: absolute;
-	left: 0.9rem;
-	top: 50%;
-	transform: translateY(-50%);
-	font-size: 1rem;
-	pointer-events: none;
+  position: absolute;
+  left: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  pointer-events: none;
 }

@@ -68,8 +68,6 @@ magicfest-backend | ... Deployment of web application archive [...] has finished
 | **Frontend**  | http://localhost:3000      |
 | **Health**    | http://localhost:8080/api/health → `{"status":"ok"}` |
 
-> `http://localhost:8080/api` sozinho retorna 404 — o backend não tem rota raiz, use `/api/health` para verificar se está no ar.
-
 ---
 
 ### Parar os containers
@@ -318,18 +316,19 @@ Após o logout, `GET /api/auth/me` deve retornar `401`.
 
 ### Front-end — GitHub Pages (automático)
 
-O workflow `.github/workflows/frontend-deploy.yml` faz o deploy automaticamente
-em cada push para `main` que altere arquivos dentro de `frontend/`.
+O workflow `.github/workflows/deploy.yml` faz o build e o deploy automaticamente
+a cada push para `main`.
 
-**Configuração:**
+**Configuração (única vez):**
 
-1. Vá em **Settings → Pages** do repositório
-2. Defina a fonte como branch `gh-pages`
-3. Vá em **Settings → Secrets → Actions** e crie:
-   ```
-   VITE_API_URL = https://URL_DO_SEU_BACKEND/api
-   ```
-4. Faça um push para `main` — o Action iniciará automaticamente
+1. Vá em **Settings → Pages** do repositório no GitHub
+2. Em **Source**, selecione **GitHub Actions**
+3. Faça um push para `main` — o workflow iniciará automaticamente
+
+A aplicação ficará disponível em:
+```
+https://Emanuel-Fontanha.github.io/dev-web-2/
+```
 
 > O front-end usa `HashRouter`, então URLs como `/#/dashboard` funcionam
 > corretamente no GitHub Pages sem configuração extra.
@@ -379,7 +378,7 @@ FRONTEND_ORIGIN = https://<seu-usuario>.github.io
 ├── docker-init.sql             # Init do banco para Docker
 ├── Dockerfile                  # Multi-stage: Maven build → Tomcat 9
 └── .github/workflows/
-    └── frontend-deploy.yml     # CI/CD para GitHub Pages
+    └── deploy.yml              # CI/CD para GitHub Pages
 ```
 
 ---

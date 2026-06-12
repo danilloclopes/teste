@@ -1,122 +1,111 @@
 .authPage {
-	min-height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background: linear-gradient(
-		135deg,
-		var(--primary-dark) 0%,
-		var(--primary) 50%,
-		var(--accent) 100%
-	);
-	padding: 2rem 1rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--accent) 100%);
+  padding: 2rem 1rem;
 }
 
 .authCard {
-	background: var(--white);
-	border-radius: 20px;
-	padding: 2.5rem 2rem;
-	width: 100%;
-	max-width: 440px;
-	box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
-	animation: fadeInUp 0.5s ease both;
+  background: var(--white);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+  animation: fadeInUp 0.5s ease both;
 }
 
 @keyframes fadeInUp {
-	from {
-		opacity: 0;
-		transform: translateY(24px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .authLogo {
-	text-align: center;
-	margin-bottom: 1.75rem;
+  text-align: center;
+  margin-bottom: 1.75rem;
 }
 
 .logoIcon {
-	font-size: 2.8rem;
-	display: block;
-	margin-bottom: 0.4rem;
+  font-size: 2.8rem;
+  display: block;
+  margin-bottom: 0.4rem;
 }
 
 .logoText {
-	font-family: var(--font-heading);
-	font-size: 1.6rem;
-	font-weight: 900;
-	background: linear-gradient(135deg, var(--primary), var(--accent));
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .logoSub {
-	font-size: 0.85rem;
-	color: var(--text-medium);
-	margin-top: 0.2rem;
+  font-size: 0.85rem;
+  color: var(--text-medium);
+  margin-top: 0.2rem;
 }
 
 .authTitle {
-	font-family: var(--font-heading);
-	font-size: 1.4rem;
-	font-weight: 800;
-	text-align: center;
-	margin-bottom: 1.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
 .divider {
-	display: flex;
-	align-items: center;
-	gap: 0.75rem;
-	margin: 1.4rem 0;
-	color: var(--text-light);
-	font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1.4rem 0;
+  color: var(--text-light);
+  font-size: 0.8rem;
 }
 
 .divider::before,
 .divider::after {
-	content: "";
-	flex: 1;
-	height: 1px;
-	background: var(--border);
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
 }
 
 .authFooterText {
-	text-align: center;
-	font-size: 0.88rem;
-	color: var(--text-medium);
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--text-medium);
 }
 
 .authFooterText a {
-	color: var(--primary);
-	font-weight: 700;
+  color: var(--primary);
+  font-weight: 700;
 }
 
 .authFooterText a:hover {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 .backLink {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 0.4rem;
-	margin-top: 1rem;
-	font-size: 0.82rem;
-	color: var(--text-medium);
-	transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  font-size: 0.82rem;
+  color: var(--text-medium);
+  transition: color 0.2s;
 }
 
 .backLink:hover {
-	color: var(--primary);
+  color: var(--primary);
 }
 
 @media (max-width: 480px) {
-	.authCard {
-		padding: 2rem 1.25rem;
-	}
+  .authCard {
+    padding: 2rem 1.25rem;
+  }
 }
